@@ -21,7 +21,6 @@ const bgtext = '안녕하세요 GSAP TEST입니다..';
 const text = bgtext.split('');
 const durationIncrement = 0.1;
 let delay = 0;
-console.log(text.length);
 for (let i = 0; i < text.length; i++) {
 	if (text[i] === ' ') {
 		const spanElement = document.createElement('span');

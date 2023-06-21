@@ -30,9 +30,9 @@ section{width: 100%; height: 100vh; overflow: hidden;}
 section .inner{width: 1180px; height: 100%; margin: 0 auto;}
 section .inner .wrap{position: relative; width: 100%; height: 100%;}
 
-section.sc1{background-color: aliceblue; position: relative; display: flex; align-items: center;}
+section.sc1{background-color: #000; position: relative; display: flex; align-items: center;}
 section.sc2{background-color: #000; width: 500vw;}
-section.sc4{background-color: palevioletred;}
+section.sc3{background-color: #000;}
 
 
 section.sc1 .inner{position: relative; width: 1180px; padding: 200px 0; margin: 0 auto; display: flex; justify-content: center;}
