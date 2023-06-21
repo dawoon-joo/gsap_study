@@ -1,10 +1,13 @@
 var controller = new ScrollMagic.Controller();
-$('body').addClass('stop_scroll');
-gsap.set('.sc1 .bg', { height: 0, opacity: 0 });
+
+//reset
+// $('body').addClass('stop_scroll');
+gsap.set('.sc1 .bg', { height: 50, opacity: 0 });
 gsap.set('.box1_1', { x: '-200%' });
 gsap.set('.box1_2', { xPercent: 200 });
 gsap.set('.box1_3', { yPercent: 200 });
 
+//load
 window.addEventListener('beforeunload', function () {
 	window.scrollTo(0, 0);
 	gsap.to($('body, html'), { duration: 0, scrollTop: 0 });
@@ -12,6 +15,8 @@ window.addEventListener('beforeunload', function () {
 	ScrollTrigger.refresh(true);
 });
 
+
+//intro text
 const bgtext = '안녕하세요 GSAP TEST입니다..';
 const text = bgtext.split('');
 const durationIncrement = 0.1;
@@ -22,17 +27,16 @@ for (let i = 0; i < text.length; i++) {
 		const spanElement = document.createElement('span');
 		spanElement.innerHTML = '&nbsp;';
 		spanElement.classList.add('gap');
-		document.querySelector('figure .intro_txt').appendChild(spanElement);
+		document.querySelector('figure .intro_txt h2').appendChild(spanElement);
 	} else {
 		const spanElement = document.createElement('span');
 		spanElement.innerHTML = text[i];
-		document.querySelector('figure .intro_txt').appendChild(spanElement);
+		document.querySelector('figure .intro_txt h2').appendChild(spanElement);
 		spanElement.style.animationDelay = delay + 's';
 		delay += durationIncrement;
 	}
 }
 
-console.log(text);
 var _visualInitTop = window.innerHeight - 200;
 var _visualMaxHeight = window.innerHeight;
 var figureAnimation = gsap
@@ -50,25 +54,85 @@ var figureAnimation = gsap
 		top: 0,
 		height: _visualMaxHeight,
 		delay: 0.1,
-		onComplete: function () {
-			$('body').removeClass('stop_scroll');
-		},
 	});
-gsap.fromTo(
-	$('figure .intro_txt span'),
-	{
-		color: '#000',
-	},
-	{
-		delay: 2.2,
-		color: '#fff',
-	}
-);
+	gsap.to(
+		$('figure .intro_txt span'),
+		{
+			fontSize: '34px',
+			delay: 2.3,
+		}
+	);
+	gsap.to(
+		$('figure .intro_txt h2'),
+		{
+			delay: 2.6,
+			top:150,
+			left:0,
+			onComplete: function () {
+				$('figure .intro_txt').css({
+					'display':'block',
+					'padding-top': '150px',
+				})
+				$('figure .intro_txt .items').css({
+					'display':'flex',
+				})
+				$('body').removeClass('stop_scroll');
+				gsap.to(
+					$('figure .intro_txt span'),
+					{
+						delay: 0.2,
+						color: '#fff',
+						ease: "power1.easeInOut",
+						fontStyle: "italic",
+					}
+				);
+				gsap.fromTo(
+					$('figure .intro_txt .item1'),
+					{
+						opacity: 0,
+						transform: 'rotateY(180deg)',
+					},
+					{
+						delay: 0.3,
+						transform: 'rotateY(0)',
+						opacity: 1,
+
+					}
+				);
+				gsap.fromTo(
+					$('figure .intro_txt .item2'),
+					{
+						opacity: 0,
+						transform: 'rotateY(-180deg)',
+					},
+					{
+						delay: 0.3,
+						transform: 'rotateY(0)',
+						opacity: 1,
+					}
+				);
+				gsap.fromTo(
+					$('figure .intro_txt .item3'),
+					{
+						opacity: 0,
+						transform: 'translateX(150%)',
+					},
+					{
+						delay: 0.7,
+						opacity: 1,
+						transform: 'translateX(0)',
+
+					}
+				);
+			},
+		}
+	);
+
 
 var wipeAnimation = gsap
 	.timeline()
 	.to('.sc1 .bg', 3, {
-		height: '100%',
+		height: 'calc(100% + 1px)',
 		opacity: 1,
 		borderRadius: 0,
 		scrollTrigger: {
@@ -83,9 +147,8 @@ var wipeAnimation = gsap
 		borderRadius: 0,
 		scrollTrigger: {
 			trigger: '.wrap',
-			scrub: 1,
-			pin: true,
-			start: 'top 250px',
+			scrub: 1.5,
+			start: 'top 300px',
 			end: 'top bottom',
 		},
 	})
@@ -95,7 +158,7 @@ var wipeAnimation = gsap
 		scrollTrigger: {
 			trigger: '.wrap',
 			scrub: 1.5,
-			start: 'top 250px',
+			start: 'top 300px',
 			end: 'top bottom',
 		},
 	})
@@ -119,49 +182,9 @@ let sc1 = new ScrollMagic.Scene({
 	.addIndicators()
 	.addTo(controller);
 
-var sc2Animation = new TimelineMax();
-sc2Animation.fromTo(
-	'.box2_1',
-	10,
-	{ opacity: 0, y: 0 },
-	{ opacity: 1, y: 0, scale: 1.25, ease: Linear.easeNone }
-);
-sc2Animation.to('.box2_1', 10, { opacity: 0, y: -100, ease: Linear.easeNone });
-sc2Animation.fromTo(
-	'.box2_2',
-	10,
-	{ opacity: 0, y: 0 },
-	{ opacity: 1, y: 0, scale: 1.25, ease: Linear.easeNone }
-);
-sc2Animation.to('.box2_2', 10, { opacity: 0, y: -100, ease: Linear.easeNone });
-sc2Animation.fromTo(
-	'.box2_3',
-	10,
-	{ opacity: 0, y: 0 },
-	{ opacity: 1, y: 0, scale: 1.25, ease: Linear.easeNone }
-);
-sc2Animation.to('.box2_3', 10, { opacity: 0, y: -100, ease: Linear.easeNone });
-sc2Animation.fromTo(
-	'.box2_4',
-	10,
-	{ opacity: 0, y: 0 },
-	{ opacity: 1, y: 0, scale: 1.25, ease: Linear.easeNone }
-);
-sc2Animation.to('.box2_4', 10, { opacity: 0, y: -100, ease: Linear.easeNone });
-
-new ScrollMagic.Scene({
-	triggerElement: '.sc2',
-	triggerHook: 'onLeave',
-	duration: '500%',
-})
-	.setPin('.sc2')
-	.setTween(sc2Animation)
-	.addIndicators()
-	.addTo(controller);
-
-var sc3Animation = gsap.timeline().to('.item', {
+var sc2Animation = gsap.timeline().to('.item', {
 	scrollTrigger: {
-		trigger: '.sc3',
+		trigger: '.sc2',
 		start: 'center center',
 		pin: true,
 		end: '+=300%',
@@ -171,11 +194,11 @@ var sc3Animation = gsap.timeline().to('.item', {
 });
 
 new ScrollMagic.Scene({
-	triggerElement: '.sc3',
+	triggerElement: '.sc2',
 	triggerHook: 'onLeave',
-	// duration: "500%"
 })
-	// .setPin(".sc3")
-	.setTween(sc3Animation)
+	.setTween(sc2Animation)
 	.addIndicators()
 	.addTo(controller);
+
+
