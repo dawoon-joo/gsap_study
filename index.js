@@ -17,7 +17,7 @@ window.addEventListener('beforeunload', function () {
 
 
 //intro text
-const bgtext = '안녕하세요 GSAP TEST입니다..';
+const bgtext = '안녕하세요 GSAP TEST입니다.';
 const text = bgtext.split('');
 const durationIncrement = 0.1;
 let delay = 0;
@@ -55,9 +55,10 @@ var figureAnimation = gsap
 		delay: 0.1,
 	});
 	gsap.to(
-		$('figure .intro_txt span'),
+		$('figure .intro_txt h2 span'),
 		{
 			fontSize: '34px',
+			color: '#fff',
 			delay: 2.3,
 		}
 	);
@@ -73,27 +74,17 @@ var figureAnimation = gsap
 					'padding-top': '150px',
 				})
 				$('figure .intro_txt .items').css({
-					'display':'flex',
+					'display':'block',
 				})
 				$('body').removeClass('stop_scroll');
-				gsap.to(
-					$('figure .intro_txt span'),
-					{
-						delay: 0.2,
-						color: '#fff',
-						ease: "power1.easeInOut",
-						fontStyle: "italic",
-					}
-				);
 				gsap.fromTo(
 					$('figure .intro_txt .item1'),
 					{
 						opacity: 0,
-						transform: 'rotateY(180deg)',
 					},
 					{
 						delay: 0.3,
-						transform: 'rotateY(0)',
+						duration: 1,
 						opacity: 1,
 
 					}
@@ -102,25 +93,62 @@ var figureAnimation = gsap
 					$('figure .intro_txt .item2'),
 					{
 						opacity: 0,
-						transform: 'rotateY(-180deg)',
 					},
 					{
 						delay: 0.3,
+						duration: 1,
+						opacity: 1,
+
+					}
+				);
+				gsap.fromTo(
+					$('figure .intro_txt .item3 .introduction'),
+					{
+						opacity: 0,
+						transform: 'translateY(50px)',
+					},
+					{
+						delay: 1,
+						duration: 0.5,
+						transform: 'translateY(0)',
+						opacity: 1,
+					}
+				);
+				gsap.fromTo(
+					$('figure .intro_txt .item3 .skill h3'),
+					{
+						opacity: 0,
+					},
+					{
+						delay: 1.5,
+						duration: 0.5,
+						opacity: 1,
+					}
+				);
+				gsap.fromTo(
+					$('figure .intro_txt .item3 .skill li'),
+					{
+						opacity: 0,
+						transform: 'rotateY(-180deg)',
+					},
+					{
+						delay: 1.5,
+						duration: 0.5,
 						transform: 'rotateY(0)',
 						opacity: 1,
 					}
 				);
 				gsap.fromTo(
-					$('figure .intro_txt .item3'),
+					$('figure .intro_txt .skill_motion'),
 					{
 						opacity: 0,
-						transform: 'translateX(150%)',
+						transform: 'translateY(200px)',
 					},
 					{
-						delay: 0.7,
+						delay: 2,
+						duration: 0.5,
+						transform: 'translateY(0)',
 						opacity: 1,
-						transform: 'translateX(0)',
-
 					}
 				);
 			},
@@ -201,3 +229,32 @@ new ScrollMagic.Scene({
 	.addTo(controller);
 
 
+
+// skill_motion
+const focus_motion = document.querySelector('.skill_value');
+const focus_guide = document.querySelector('.guide');
+const skill_items = document.querySelector('.skill');
+const skill_item = skill_items.querySelectorAll('ul li');
+const focus_items = focus_motion.textContent.split(' ');
+
+skill_item.forEach((el, idx) => {
+  el.addEventListener('mouseenter', (e) => {
+		focus_motion.classList.remove('blind');
+		focus_guide.classList.add('blind');
+    let index = el.querySelector('span').textContent;
+
+		focus_motion.innerHTML = focus_items.map(item =>{
+			if(item !== index){
+				return `<span class="animated">${index}</span>`;
+			}else{
+				return item;
+			}
+		}).join(' ');
+
+		void focus_motion.offsetWidth;
+    const animatedSpans = focus_motion.querySelectorAll('.animated');
+    animatedSpans.forEach(span => {
+			span.classList.add('appear');
+    });
+  });
+});

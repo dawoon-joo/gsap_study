@@ -1,0 +1,129 @@
+*{margin: 0;padding: 0;box-sizing: border-box; font-family: score1;}
+ul,ol,li{list-style: none;}
+a{text-decoration: none; color: #000;}
+.blind{position: absolute; clip: rect(0,0,0,0); width: 0; height: 1px; margin: -1px; padding:0; overflow: hidden;}
+
+body.stop_scroll {overflow: hidden; height:100%; min-height:100%; touch-action: none;}
+
+header{width: 100%; height: 100px; background: transparent; position: absolute; top: 0; left: 0; z-index: 2; display: none;}
+header.on{display: block;}
+header .inner{width: 1180px; height: 100%; display: flex; justify-content: space-between; align-items: center; margin: 0 auto; color: #fff;} 
+header .inner .gnb{display: flex; gap: 30px; font-size: 16px;}
+header .inner a{color: #fff;}
+
+
+figure{ width: 100%; height: 100vh; background: #fff; overflow: hidden;}
+figure .inner{display: flex; justify-content: center; height: 100%; position: relative;}
+figure .bg{background-color: black; width: 70%; height: 30%; position: absolute; top:calc(100vh - 100px); opacity: 0; }
+figure .intro_txt {width: 1180px; color: #fff; display: flex; justify-content: center; align-items: center; z-index: 1; position: relative;}
+figure .intro_txt h2{display: flex; justify-content: space-between; position: absolute;}
+figure .intro_txt h2 span{color: #000; font-size: 50px; animation: textAni .6s forwards; opacity: 0; font-family: score3;}
+figure .intro_txt.on span{color: #fff;}
+figure .items {display: none; width: 100%; gap: 50px; }
+figure .items .intro{padding-top: 100px;display: flex;gap: 30px;margin-bottom: 100px;}
+figure .items .intro, figure .items .skill{width: 100%;}
+figure .items .intro .item {background-color: #fff; height: 100%; background-color: transparent; font-size: 18px; line-height: 1.5; width: 50%;}
+figure .items .intro .item1{width: 30%;}
+figure .items .intro .item2{width: 10%;}
+figure .items .intro .item3{width: 60%;}
+figure .items .intro .item1 .photo{background-color: #000; width: 345px; height: 425px; border-radius: 50px; overflow: hidden; display: flex; justify-content: center; align-items: center; padding: 10px; position: relative;}
+figure .items .intro .photo::before{content:''; position: absolute; width: 160%; height: 160%; background:conic-gradient(from 90deg, transparent 70%, rgba(255, 255, 255, 0.5) 90%, rgb(255, 255, 255) 100%); animation: figureAni 3s linear infinite;}
+figure .items .intro .photo::after{content: ''; position: absolute; top: 5px; left: 5px; width: 335px; height: 415px; border-radius: 45px; background-color: #000;}
+figure .items .intro .photo .con{width: 95%; height: 95%; background-color: #fff; z-index: 1; border-radius: 20px; background: #222}
+/* url(../img/profil.png)no-repeat center/cover; */
+figure .items .intro .item2 .links{ width: 70px; height: 80%; padding: 20px 0; background: #000; border-radius: 7px; display: flex; justify-content: space-between; flex-direction: column; gap: 30px; margin: 0 auto;}
+figure .items .intro .item2 .links a{	width: 100%; display: block; color: #fff; text-align: center; font-size: 14px;}
+figure .items .intro .item2 .links a i{ display: block; font-size: 20px; text-shadow: none; margin-bottom: 10px;}
+figure .items .intro .item3 .introduction{width: 100%;margin-bottom: 40px; font-size: 18px; line-height: 1.7; }
+figure .items .intro .item3 .skill{width: 100%; text-align: center;}
+figure .items .intro .item3 .skill h3{margin-bottom: 30px; font-size: 24px;}
+figure .items .intro .item3 .skill ul{width: 100%; text-align: center; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px 0;}
+figure .items .intro .item3 .skill ul li{width: 20%;}
+figure .items .intro .item3 .skill ul li img{width: 50px;height: 50px;cursor: pointer;transition: 0.5s;}
+figure .items .intro .item3 .skill ul li img:hover{transform: rotate(10deg) scale(1.1);}
+figure .items .skill_motion {width: 100%;max-width:100%;position: relative;overflow-x: hidden;overflow-y: hidden;padding: 20px 0;}
+figure .items .skill_motion .inner{width: 100%; height: 100%; position: initial;}
+figure .items .skill_motion .inner::after{content: ''; display: block; position: absolute; top: 0; width: 100%; height: 0.5vw; background-color: #fff;}
+figure .items .skill_motion .inner::before{content: ''; display: block; position: absolute; bottom: 0; width: 100%; height: 0.5vw; background-color: #fff;}
+figure .items .skill_motion .inner .guide{width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;font-size: 24px; font-family: score3;}
+figure .items .skill_motion .inner .skill_value{width: 100%;display: flex;align-items: center;justify-content: space-between;font-size: 24px;gap: 120px;white-space: nowrap;will-change: transform;animation: marquee 10s linear infinite;}
+figure .items .skill_motion .inner .skill_value span.animated {opacity: 0; transition: opacity 0.5s ease-in-out;}
+figure .items .skill_motion .inner .skill_value span.appear {opacity: 1; font-family: score2;}
+
+main{overflow: hidden;}
+section{width: 100%; height: 100vh; overflow: hidden;}
+section .inner{width: 1180px; height: 100%; margin: 0 auto;}
+section .inner .wrap{position: relative; width: 100%; height: 100%;}
+
+section.sc1{background-color: #000; position: relative; display: flex; align-items: center;}
+section.sc2{background-color: #000; width: 500vw;}
+section.sc3{background-color: #000;}
+
+
+section.sc1 .inner{position: relative; width: 1180px; padding: 200px 0; margin: 0 auto; display: flex; justify-content: center;}
+section.sc1 .bg{width: calc(100% + 1px); height: 100%; position: absolute; background-color: #000; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+section.sc1 .box{width: 200px;height: 200px; margin: 20px; background-color: #fff; float: left;}
+section.sc1 .box1_1{width: calc(50% - 40px); height: calc(500px - 40px);}
+section.sc1 .box1_2{width: calc(50% - 40px); height: calc(250px - 40px);}
+section.sc1 .box1_3{width: calc(50% - 40px); height: calc(250px - 40px);}
+
+section.sc2 ul{width: 100%; height: 100%; gap: 100px; display: flex; align-items: center;}
+section.sc2 ul li{width: 500px; height: 500px;}
+section.sc2 ul li:nth-child(1){background-color: blue; margin-left: 100px;}
+section.sc2 ul li:nth-child(2){background-color: yellow;}
+section.sc2 ul li:nth-child(3){background-color: gainsboro;}
+section.sc2 ul li:nth-child(4){background-color: green;}
+section.sc2 ul li:nth-child(5){background-color: red;}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes figureAni{
+  0%{transform: rotate(0deg);}
+  100%{transform: rotate(360deg);}
+}
+
+@keyframes textAni{
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
+
+
+@media screen and (max-width: 1179px) {
+  header .inner{width: 100%; padding: 0 20px;} 
+
+  figure .inner{padding: 0 20px;}
+  figure .intro_txt {width: 100%;}
+  figure .intro_txt h2 span{font-size: 40px;}
+  figure .items {gap: 0px; }
+  figure .items .intro{gap: 10px; flex-wrap: wrap;}
+  figure .items .intro .item1{width: 100%;}
+  figure .items .intro .item2{width: 100%;}
+  figure .items .intro .item3{width: 100%;}
+  figure .items .intro .item1 .photo{background-color: #000; width: 345px; height: 425px; border-radius: 50px; overflow: hidden; display: flex; justify-content: center; align-items: center; padding: 10px; position: relative;}
+  figure .items .intro .photo::before{content:''; position: absolute; width: 160%; height: 160%; background:conic-gradient(from 90deg, transparent 70%, rgba(255, 255, 255, 0.5) 90%, rgb(255, 255, 255) 100%); animation: figureAni 3s linear infinite;}
+  figure .items .intro .photo::after{content: ''; position: absolute; top: 5px; left: 5px; width: 335px; height: 415px; border-radius: 45px; background-color: #000;}
+  figure .items .intro .photo .con{width: 95%; height: 95%; background-color: #fff; z-index: 1; border-radius: 20px; background:#222}
+
+  figure .items .intro .item2 .links{ width: auto; padding: 20px 0; justify-content: start; flex-direction: row; gap: 10px;}
+  figure .items .intro .item2 .links a{	width: 100%; display: block; color: #fff; text-align: center; font-size: 14px;}
+  figure .items .intro .item2 .links a i{ display: block; font-size: 20px; text-shadow: none; margin-bottom: 10px;}
+
+  figure .items .intro .item3 .introduction{width: 100%;margin-bottom: 40px; font-size: 18px; line-height: 1.7; }
+  figure .items .intro .item3 .skill{width: 100%; text-align: center;}
+  figure .items .intro .item3 .skill h3{margin-bottom: 30px; font-size: 24px;}
+  figure .items .intro .item3 .skill ul{width: 100%; text-align: center; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 30px 0;}
+  figure .items .intro .item3 .skill ul li{width: 20%;}
+  figure .items .intro .item3 .skill ul li img{width: 50px;height: 50px;cursor: pointer;transition: 0.5s;}
+  figure .items .intro .item3 .skill ul li img:hover{transform: rotate(10deg) scale(1.1);}
+  figure .items .skill_motion {width: 100%;max-width:100%;position: relative;overflow-x: hidden;overflow-y: hidden;padding: 20px 0;}
+  figure .items .skill_motion .inner{width: 100%; height: 100%; position: initial;}
+  figure .items .skill_motion .inner::after{content: ''; display: block; position: absolute; top: 0; width: 100%; height: 0.5vw; background-color: #fff;}
+  figure .items .skill_motion .inner::before{content: ''; display: block; position: absolute; bottom: 0; width: 100%; height: 0.5vw; background-color: #fff;}
+  figure .items .skill_motion .inner .guide{width: 100%;height: 100%;display: flex;justify-content: center;align-items: center;font-size: 24px; font-family: score3;}
+  figure .items .skill_motion .inner .skill_value{width: 100%;display: flex;align-items: center;justify-content: space-between;font-size: 24px;gap: 120px;white-space: nowrap;will-change: transform;animation: marquee 10s linear infinite;}
+  figure .items .skill_motion .inner .skill_value span.animated {opacity: 0; transition: opacity 0.5s ease-in-out;}
+  figure .items .skill_motion .inner .skill_value span.appear {opacity: 1; font-family: score2;}
+}
