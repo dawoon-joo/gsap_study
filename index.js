@@ -1,11 +1,11 @@
 var controller = new ScrollMagic.Controller();
 
 //reset
-// $('body').addClass('stop_scroll');
-gsap.set('.sc1 .bg', { height: 50, opacity: 0 });
-gsap.set('.box1_1', { x: '-200%' });
-gsap.set('.box1_2', { xPercent: 200 });
-gsap.set('.box1_3', { yPercent: 200 });
+$('body').addClass('stop_scroll');
+// gsap.set('.sc1 .bg', { height: 50, opacity: 0 });
+// gsap.set('.box1_1', { x: '-200%' });
+// gsap.set('.box1_2', { xPercent: 200 });
+// gsap.set('.box1_3', { yPercent: 200 });
 
 //load
 window.addEventListener('beforeunload', function () {
@@ -120,7 +120,7 @@ var figureAnimation = gsap
 						opacity: 0,
 					},
 					{
-						delay: 1.5,
+						delay: 1,
 						duration: 0.5,
 						opacity: 1,
 					}
@@ -132,7 +132,7 @@ var figureAnimation = gsap
 						transform: 'rotateY(-180deg)',
 					},
 					{
-						delay: 1.5,
+						delay: 1,
 						duration: 0.5,
 						transform: 'rotateY(0)',
 						opacity: 1,
@@ -145,7 +145,7 @@ var figureAnimation = gsap
 						transform: 'translateY(200px)',
 					},
 					{
-						delay: 2,
+						delay: 1.5,
 						duration: 0.5,
 						transform: 'translateY(0)',
 						opacity: 1,
@@ -156,58 +156,48 @@ var figureAnimation = gsap
 	);
 
 
-var wipeAnimation = gsap
-	.timeline()
-	.to('.sc1 .bg', 3, {
-		height: 'calc(100% + 1px)',
-		opacity: 1,
-		borderRadius: 0,
+	gsap.to('.box1_1', {
 		scrollTrigger: {
-			trigger: '.sc1',
-			scrub: 1.5,
-			start: 'top 300px',
-			end: 'top bottom',
-		},
+			trigger: ".sc1",
+			start:"top center",
+			end:"bottom top",
+			pinSpacing: false,  
+			onEnter: function(){
+			$(".box1_1").addClass("on");
+			}, 
+			onLeaveBack: function(){
+			$(".box1_1").removeClass("on");
+			}, 
+		}, 
 	})
-	.to('.box1_1', {
-		x: 0,
-		borderRadius: 0,
+	gsap.to('.box1_2', {
 		scrollTrigger: {
-			trigger: '.wrap',
-			scrub: 1.5,
-			start: 'top 300px',
-			end: 'top bottom',
-		},
+			trigger: ".sc1",
+			start:"top center",
+			end:"bottom top",
+			pinSpacing: false,  
+			onEnter: function(){
+			$(".box1_2").addClass("on");
+			}, 
+			onLeaveBack: function(){
+			$(".box1_2").removeClass("on");
+			}, 
+		}, 
 	})
-	.to('.box1_2', {
-		xPercent: 0,
-		ease: 'none',
+	gsap.to('.box1_3', {
 		scrollTrigger: {
-			trigger: '.wrap',
-			scrub: 1.5,
-			start: 'top 300px',
-			end: 'top bottom',
-		},
-	})
-	.to('.box1_3', {
-		yPercent: 0,
-		ease: 'none',
-		scrollTrigger: {
-			trigger: '.wrap',
-			scrub: 2,
-			start: 'top 250px',
-			end: 'top bottom',
-		},
+			trigger: ".sc1",
+			start:"top center",
+			end:"bottom top",
+			pinSpacing: false,  
+			onEnter: function(){
+			$(".box1_3").addClass("on");
+			}, 
+			onLeaveBack: function(){
+			$(".box1_3").removeClass("on");
+			}, 
+		}, 
 	});
-let sc1 = new ScrollMagic.Scene({
-	triggerElement: '.sc1',
-	triggerHook: 'onLeave',
-	duration: '500',
-})
-	.setPin('.sc1')
-	.setTween(wipeAnimation)
-	.addIndicators()
-	.addTo(controller);
 
 var sc2Animation = gsap.timeline().to('.item', {
 	scrollTrigger: {

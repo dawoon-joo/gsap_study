@@ -62,7 +62,8 @@ section.sc3{background-color: #000;}
 
 section.sc1 .inner{position: relative; width: 1180px; padding: 200px 0; margin: 0 auto; display: flex; justify-content: center;}
 section.sc1 .bg{width: calc(100% + 1px); height: 100%; position: absolute; background-color: #000; top: 50%; left: 50%; transform: translate(-50%,-50%);}
-section.sc1 .box{width: 200px;height: 200px; margin: 20px; background-color: #fff; float: left;}
+section.sc1 .box{width: 200px;height: 200px; margin: 20px; background-color: #fff; float: left; transition: all 1s;}
+section.sc1 .box.on {background-color: pink;}
 section.sc1 .box1_1{width: calc(50% - 40px); height: calc(500px - 40px);}
 section.sc1 .box1_2{width: calc(50% - 40px); height: calc(250px - 40px);}
 section.sc1 .box1_3{width: calc(50% - 40px); height: calc(250px - 40px);}
